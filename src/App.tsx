@@ -1,21 +1,16 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import AllEvents from "./pages/AllEvents";
-import AddEvent from "./pages/AddEvent";
-import Favorites from "./pages/Favorites";
-import MainNav from "./components/MainNav";
+import Search from "./components/search/search";
 
 function App() {
+
+  function handleOnSearchChange(searchData: object) {
+    console.log(searchData);
+  }
+
   return (
-    <>
-      <MainNav />
-      <Routes>
-        <Route path="/" element={<AllEvents />}></Route>
-        <Route path="/favorites" element={<Favorites />}></Route>
-        <Route path="/add-event" element={<AddEvent />}></Route>
-      </Routes>
-    </>
-  );
+    <div className='max-w-screen-lg my-10 mx-auto'>
+      <Search onSearchChange={handleOnSearchChange} />
+    </div>
+  );  
 }
 
 export default App;
