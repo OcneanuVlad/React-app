@@ -1,3 +1,5 @@
+// cities api
+
 export const geoApiOptions = {
 	method: 'GET',
 	headers: {
@@ -6,4 +8,10 @@ export const geoApiOptions = {
 	}
 };
 
-export const GEO_API_URL = "https://wft-geo-db.p.rapidapi.com/v1/geo";
+export const geoApiUrl = "https://wft-geo-db.p.rapidapi.com/v1/geo";
+
+// weather api
+
+export const weatherApiKey = "5fd3fa0847f184db11847cdce1ec6cdf";
+
+export const weatherApiUrl = "https://api.openweathermap.org/data/2.5";

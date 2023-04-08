@@ -562,26 +562,50 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
-.my-10 {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
+.flex {
+  display: flex;
 }
 
-.h-screen {
-  height: 100vh;
+.h-auto {
+  height: auto;
 }
 
-.max-w-screen-lg {
-  max-width: 1024px;
+.h-full {
+  height: 100%;
+}
+
+.w-8\/12 {
+  width: 66.666667%;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 
 .border {
   border-width: 1px;
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .outline {
@@ -604,21 +628,71 @@ video {
 }
 
 .search__control .search__indicators .search__indicator-separator {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .search__control .search__indicators .search__indicator {
-  color: black;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .search__control:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
 }
 
 .search__control--is-focused {
-  -webkit-transform: scale(1) !important;
-          transform: scale(1) !important;
-  border: 0.1rem solid rgba(0, 0, 0, 0.623) !important;
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  border: 0.08rem solid rgba(0, 0, 0, 0.6) !important;
+}
+
+.search__menu {
+  -webkit-animation-name: pop;
+          animation-name: pop;
+  -webkit-animation-duration: 400ms;
+          animation-duration: 400ms;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  position: relative;
+  overflow: hidden;
+  width: 20vw !important;
+}
+
+.search__menu > * > * {
+  -webkit-animation-name: pop;
+          animation-name: pop;
+  -webkit-animation-duration: 400ms;
+          animation-duration: 400ms;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+@-webkit-keyframes pop {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 100%;
+  }
+}
+
+.forecast {
+  margin-top: 5vh;
+  height: 50vh;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,27 +1,25 @@
 import { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
-import { geoApiOptions, GEO_API_URL } from "../../api";
+import { geoApiOptions, geoApiUrl } from "../../api";
+import { data } from "../../App";
 
 type city = {
   latitude: number;
   longitude: number;
   name: string;
   countryCode: string;
-}
-
-type SearchProps = {
-  onSearchChange: (searchData: object) => void;
 };
 
-
+type SearchProps = {
+  onSearchChange: (searchData: data) => void;
+};
 
 function Search({ onSearchChange }: SearchProps) {
-
   const [search, setSearch] = useState(null);
 
   function loadOptions(inputValue: string): Promise<any> {
     return fetch(
-      `${GEO_API_URL}/cities?minPopulation=100000&namePrefix=${inputValue}`,
+      `${geoApiUrl}/cities?minPopulation=100000&namePrefix=${inputValue}`,
       geoApiOptions
     )
       .then((response) => response.json())
@@ -46,25 +44,22 @@ function Search({ onSearchChange }: SearchProps) {
   return (
     <AsyncPaginate
       placeholder="Search for city"
-      debounceTimeout={600}
+      debounceTimeout={800}
       value={search}
       onChange={handleOnChange}
       loadOptions={loadOptions}
       classNamePrefix="search"
       theme={(theme) => ({
         ...theme,
-        borderRadius: 0,
         colors: {
           ...theme.colors,
-          primary25: 'white', // hover option
-          neutral0: 'white', // backgrounds
-          primary: 'transparent', // selected : border
-          neutral20: 'transparent', // normal outlines
-          neutral30: 'transparent', // hover outline
-
+          primary25: "white", // hover option
+          neutral0: "white", // backgrounds
+          primary: "transparent", // selected : border
+          neutral20: "transparent", // normal outlines
+          neutral30: "transparent", // hover outline
         },
       })}
-  
     />
   );
 }

@@ -15,17 +15,47 @@
   cursor: text;
 }
 .search__control .search__indicators .search__indicator-separator {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 .search__control .search__indicators .search__indicator {
-  color: black;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .search__control:hover {
-  transform: scale(1.02);
+  transform: scale(1.04);
 }
 
 .search__control--is-focused {
-  transform: scale(1) !important;
-  border: 0.1rem solid rgba(0, 0, 0, 0.623) !important;
+  transform: scale(1.04);
+  border: 0.08rem solid rgba(0, 0, 0, 0.6) !important;
+}
+
+.search__menu {
+  animation-name: pop;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+  position: relative;
+  overflow: hidden;
+  width: 20vw !important;
+}
+
+.search__menu > * > * {
+  animation-name: pop;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+.forecast {
+  margin-top: 5vh;
+  height: 50vh;
 }/*# sourceMappingURL=index.css.map */
