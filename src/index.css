@@ -1,24 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+  font-family: "Montserrat", sans-serif;
+}
+body canvas {
+  cursor: pointer;
+}
+
 .search__control {
+  border: none !important;
   border-top-left-radius: 1.5rem !important;
   border-top-right-radius: 0.4rem !important;
   border-bottom-left-radius: 0.4rem !important;
   border-bottom-right-radius: 1.5rem !important;
   transition: 500ms;
   transition-timing-function: ease-in-out;
-  width: 20vw;
-  box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.532) !important;
+  width: 40vw;
+  box-shadow: 0px 7px 15px 1px rgba(0, 0, 0, 0.4) !important;
+  color: #fefefe !important;
+  background-color: #2d2d2d !important;
 }
 .search__control .search__value-container {
   cursor: text;
 }
+.search__control .search__value-container .search__single-value {
+  margin-left: 1rem;
+}
+.search__control .search__value-container .search__placeholder {
+  margin-left: 1rem;
+  color: #fefefe;
+}
+.search__control .search__value-container .search__input-container {
+  margin-left: 1rem;
+}
+.search__control .search__indicators {
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 .search__control .search__indicators .search__indicator-separator {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #fefefe;
+  position: absolute;
+  left: 2px;
 }
 .search__control .search__indicators .search__indicator {
-  color: rgba(0, 0, 0, 0.4);
+  color: #fefefe;
 }
 
 .search__control:hover {
@@ -27,7 +57,6 @@
 
 .search__control--is-focused {
   transform: scale(1.04);
-  border: 0.08rem solid rgba(0, 0, 0, 0.6) !important;
 }
 
 .search__menu {
@@ -37,7 +66,8 @@
   animation-iteration-count: 1;
   position: relative;
   overflow: hidden;
-  width: 20vw !important;
+  width: 40vw !important;
+  background-color: #2d2d2d !important;
 }
 
 .search__menu > * > * {
@@ -56,6 +86,55 @@
   }
 }
 .forecast {
-  margin-top: 5vh;
   height: 50vh;
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 5rem;
+  box-shadow: 0px 20px 40px 1px #8563ee;
+  background-image: linear-gradient(135deg, #f56fe3, #3363e9) !important;
+  font-weight: 100;
+}
+.forecast .forecast-info-right {
+  margin-right: 5%;
+  margin-top: 2.5%;
+}
+.forecast .forecast-info-left {
+  margin-top: 2.5%;
+  margin-left: 5%;
+}
+
+.button {
+  background-color: #2d2d2d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: center;
+  cursor: pointer;
+  border-top-left-radius: 1.8rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  border-bottom-right-radius: 1.8rem;
+  box-shadow: 0px 10px 20px 1px rgba(0, 0, 0, 0.4);
+  @apply w-28 h-28 mx-6 flex flex-col;
+  transition: 250ms;
+  background-position: 50% 0%;
+}
+.button p {
+  font-size: 1rem;
+  font-weight: 750;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.buttonSelected {
+  background-position: 50% 100%;
+  background-image: linear-gradient(135deg, #f56fe3, #3363e9) !important;
+  box-shadow: 0px 10px 20px 1px #8563ee !important;
+}
+
+.chart {
+  height: 43%;
 }/*# sourceMappingURL=index.css.map */

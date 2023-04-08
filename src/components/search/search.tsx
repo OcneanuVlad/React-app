@@ -49,17 +49,8 @@ function Search({ onSearchChange }: SearchProps) {
       onChange={handleOnChange}
       loadOptions={loadOptions}
       classNamePrefix="search"
-      theme={(theme) => ({
-        ...theme,
-        colors: {
-          ...theme.colors,
-          primary25: "white", // hover option
-          neutral0: "white", // backgrounds
-          primary: "transparent", // selected : border
-          neutral20: "transparent", // normal outlines
-          neutral30: "transparent", // hover outline
-        },
-      })}
+      unstyled
+    
     />
   );
 }
