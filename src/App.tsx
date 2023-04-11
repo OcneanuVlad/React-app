@@ -21,6 +21,7 @@ type location = {
 
 let timeoutId;
 
+// component
 function App() {
   const [forecast, setForecast] = useState<Array<Array<Object>> | null>(null);
   const [day, setDay] = useState<number>(0);
@@ -32,24 +33,24 @@ function App() {
 
   window.onload = function () {
     const body: HTMLElement = document.querySelector(".mainContainer");
+
+    // set height based on device
     body.style.height = `${window.screen.height - 120}px`;
-    console.log('test1')
+    
     const blocks: HTMLElement = document.querySelector(".main-blocks-container");
 
+    // get current location
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log('testAcc')
         fetchData(position.coords.latitude, position.coords.longitude);
       },
       (error) => {
-        console.log('testErr')
         console.log(error);
         blocks.style.zIndex = "0";
       }
     );
     setTimeout(() => {
       blocks.style.zIndex = "0";
-      console.log('test2')
     }, 5000);
   };
 
@@ -72,10 +73,11 @@ function App() {
     forecastFetch
       .then(async (response: any) => {
         const forecastResponse = await response.json();
-        console.log(forecastResponse);
 
         gsap.fromTo(".button-blocks-container", { x: "0%" }, { duration: 1.5, x: "-400%" });
         gsap.fromTo(".blocks-container", { x: "0%" }, { duration: 1.5, x: "400%" });
+
+        // delay the update for the animation to take place
         setTimeout(() => {
           setLocation({
             city: forecastResponse.city.name,
@@ -101,6 +103,8 @@ function App() {
         console.log(err);
       });
   }
+
+  // dummy data for testing purposes
 
   // function fetchData(lat, lon) {
   //   const forecastResponse = dummy;

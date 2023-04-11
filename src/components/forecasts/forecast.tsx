@@ -30,7 +30,6 @@ function firstLetterToUppercase(str) {
 
 // component
 function Forecast({ handleOnHourChange, day, hour, forecastData, location, handleDegreeChange, degree, handleSetFavorite, favorites }) {
-
   var dayName: string = getDayName(day);
   if (hour !== null) {
     var currentHour: string = forecastData[day][hour].dt_txt.split(" ")[1].slice(0, -3);
@@ -87,6 +86,7 @@ function Forecast({ handleOnHourChange, day, hour, forecastData, location, handl
         <div className="forecast-info-left h-full w-1/2 flex flex-col ">
           <div className="flex w-full">
             <p className="city text-3xl flex w-auto m-0">{location.city}</p>
+            {/* add to favorite cities button */}
             <button className="star w-1/12 ml-3 flex justify-center items-center" onClick={setFavorite}>
               <img
                 className="w-3/4"
@@ -97,6 +97,7 @@ function Forecast({ handleOnHourChange, day, hour, forecastData, location, handl
           <p className="secondary">
             {dayName} {hour !== null ? currentHour : null}
           </p>
+          {/* weather description */}
           <p className="secondary">
             {hour !== null
               ? firstLetterToUppercase(forecastData[day][hour].weather[0].description)
@@ -112,6 +113,7 @@ function Forecast({ handleOnHourChange, day, hour, forecastData, location, handl
             alt="overall"
           ></img>
         </div>
+        {/* select metric or imperial */}
         <div className="degrees absolute flex justify-evenly top-8 w-16">
           <button
             className={degree === "C" ? "cursor-pointer font-bold text-contrast" : "cursor-pointer font-thin text-contrast2"}
