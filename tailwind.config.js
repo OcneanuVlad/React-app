@@ -12,7 +12,7 @@ module.exports = {
         contrast: "#fefefe",
         accent1: "#f56fe3",
         accent2: "#3363e9",
-        contrast2: "#b4b4b4",
+        contrast2: "#c4c4c4",
       },
     },
   },

@@ -1,25 +1,15 @@
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend,
-  PointElement,
-} from "chart.js";
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, Tooltip, Legend, PointElement } from "chart.js";
 import { Line } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
+import { useEffect } from "react";
+import { gsap } from "gsap";
 
 function Chart({ data, day, handlePointClick, index }) {
-  ChartJS.register(
-    LineElement,
-    CategoryScale,
-    LinearScale,
-    Tooltip,
-    Legend,
-    PointElement,
-    ChartDataLabels
-  );
+  useEffect(() => {
+    gsap.to(".main-blocks-container", { duration: 3, y: "200%" });
+  }, []);
+
+  ChartJS.register(LineElement, CategoryScale, LinearScale, Tooltip, Legend, PointElement, ChartDataLabels);
 
   const hours = data[day].map((item) => item.dt_txt.split(" ")[1].slice(0, -3));
   const allTemps = [];
@@ -34,8 +24,7 @@ function Chart({ data, day, handlePointClick, index }) {
       {
         label: "test",
         data: temps,
-        backgroundColor: (context) =>
-          context.dataIndex === index ? "#2d2d2d" : "#fefefe",
+        backgroundColor: (context) => (context.dataIndex === index ? "#2d2d2d" : "#fefefe"),
         borderColor: "#fefefe",
         borderWidth: 3,
         pointBorderColor: "transparent",
@@ -45,6 +34,9 @@ function Chart({ data, day, handlePointClick, index }) {
   };
 
   const options: any = {
+    animation: {
+      duration: 200,
+    },
     maintainAspectRatio: false,
     onClick: pointClick,
     elements: {
@@ -90,7 +82,7 @@ function Chart({ data, day, handlePointClick, index }) {
       },
       y: {
         display: false,
-        max: Math.max(...allTemps) + 2,
+        max: Math.max(...allTemps) + 4,
         min: Math.min(...allTemps) - 2,
         grid: {
           display: false,
@@ -106,7 +98,7 @@ function Chart({ data, day, handlePointClick, index }) {
   }
 
   return (
-    <div className="chart w-11/12 absolute bottom-5">
+    <div className="chart">
       <Line data={chartData} options={options} />
     </div>
   );

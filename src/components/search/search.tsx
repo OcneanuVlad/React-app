@@ -18,10 +18,7 @@ function Search({ onSearchChange }: SearchProps) {
   const [search, setSearch] = useState(null);
 
   function loadOptions(inputValue: string): Promise<any> {
-    return fetch(
-      `${geoApiUrl}/cities?minPopulation=100000&namePrefix=${inputValue}`,
-      geoApiOptions
-    )
+    return fetch(`${geoApiUrl}/cities?minPopulation=10000&namePrefix=${inputValue}`, geoApiOptions)
       .then((response) => response.json())
       .then((response) => {
         return {
@@ -41,17 +38,6 @@ function Search({ onSearchChange }: SearchProps) {
     onSearchChange(searchData);
   }
 
-  return (
-    <AsyncPaginate
-      placeholder="Search for city"
-      debounceTimeout={800}
-      value={search}
-      onChange={handleOnChange}
-      loadOptions={loadOptions}
-      classNamePrefix="search"
-      unstyled
-    
-    />
-  );
+  return <AsyncPaginate placeholder="Search for city" debounceTimeout={800} value={search} onChange={handleOnChange} loadOptions={loadOptions} classNamePrefix="search" unstyled />;
 }
 export default Search;
