@@ -33,17 +33,24 @@ function App() {
   window.onload = function () {
     const body: HTMLElement = document.querySelector(".mainContainer");
     body.style.height = `${window.screen.height - 120}px`;
+    console.log('test1')
+    const blocks: HTMLElement = document.querySelector(".main-blocks-container");
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
+        console.log('testAcc')
         fetchData(position.coords.latitude, position.coords.longitude);
       },
       (error) => {
+        console.log('testErr')
         console.log(error);
-        const blocks: HTMLElement = document.querySelector('.main-blocks-container');
         blocks.style.zIndex = "0";
       }
     );
+    setTimeout(() => {
+      blocks.style.zIndex = "0";
+      console.log('test2')
+    }, 5000);
   };
 
   function handleOnHourChange(value) {
@@ -67,28 +74,28 @@ function App() {
         const forecastResponse = await response.json();
         console.log(forecastResponse);
 
-        setLocation({
-          city: forecastResponse.city.name,
-          country: forecastResponse.city.country,
-          coord: forecastResponse.city.coord,
-        });
-        let daysForecast: Array<Array<Object>> = [[]];
-        let day: number = 0;
-        daysForecast[day].push(forecastResponse.list[0]);
-        for (let i = 1; i <= 39; i++) {
-          if (forecastResponse.list[i - 1].dt_txt.split(" ")[1] > forecastResponse.list[i].dt_txt.split(" ")[1]) {
-            day++;
-            daysForecast[day] = [];
-          }
-          daysForecast[day].push(forecastResponse.list[i]);
-        }
-        ChangeColors();
         gsap.fromTo(".button-blocks-container", { x: "0%" }, { duration: 1.5, x: "-400%" });
         gsap.fromTo(".blocks-container", { x: "0%" }, { duration: 1.5, x: "400%" });
-
         setTimeout(() => {
+          setLocation({
+            city: forecastResponse.city.name,
+            country: forecastResponse.city.country,
+            coord: forecastResponse.city.coord,
+          });
+          let daysForecast: Array<Array<Object>> = [[]];
+          let day: number = 0;
+          daysForecast[day].push(forecastResponse.list[0]);
+          for (let i = 1; i <= 39; i++) {
+            if (forecastResponse.list[i - 1].dt_txt.split(" ")[1] > forecastResponse.list[i].dt_txt.split(" ")[1]) {
+              day++;
+              daysForecast[day] = [];
+            }
+            daysForecast[day].push(forecastResponse.list[i]);
+          }
+          ChangeColors();
+
           setForecast(daysForecast);
-        }, 300);
+        }, 250);
       })
       .catch((err) => {
         console.log(err);
