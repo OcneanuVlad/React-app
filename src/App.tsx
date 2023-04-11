@@ -74,8 +74,10 @@ function App() {
       .then(async (response: any) => {
         const forecastResponse = await response.json();
 
+        if (document.querySelector(".blocks-container")) {
         gsap.fromTo(".button-blocks-container", { x: "0%" }, { duration: 1.5, x: "-400%" });
         gsap.fromTo(".blocks-container", { x: "0%" }, { duration: 1.5, x: "400%" });
+        }
 
         // delay the update for the animation to take place
         setTimeout(() => {
